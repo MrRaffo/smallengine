@@ -43,7 +43,7 @@ void palette_destroy(struct palette *pal);
  */
 
 /*
- * check if a palette contains a certain color, returns index if so, 0 otherwise
+ * check if a palette contains a certain color, returns index if so, -1 otherwise
  */
 int palette_check_color(struct palette pal, const struct color col);
 
