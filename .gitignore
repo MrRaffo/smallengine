@@ -7,3 +7,5 @@ tags
 *.a
 vgcore*
 todo
+build/
+
