@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 
-#include <smallengine/maths/maths.h>
-#include <smallengine/maths/tuple.h>
+#include <smallengine/se_maths.h>
 
 /* Creation and initialization */
 

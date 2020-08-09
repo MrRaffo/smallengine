@@ -1,8 +1,5 @@
-#include <smallengine/sys/mem.h>
-#include <smallengine/graphics/texture.h>
-#include <smallengine/graphics/canvas.h>
-#include <smallengine/graphics/color.h>
-
+#include <smallengine/se_sys.h>
+#include <smallengine/se_graphics.h>
 
 struct texture texture(const int width, const int height)
 {

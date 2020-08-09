@@ -4,14 +4,16 @@ project (smallengine
     LANGUAGES C)
 
 # get header files
-file(GLOB HEADERS inc/smallengine/**/*.h)
+file(GLOB HEADERS inc/smallengine/*.h)
+#message(${HEADERS})
 
 # get source files
-file(GLOB GRAPHICS_SRCS src/smallengine/graphics/*.c)
-file(GLOB MATHS_SRCS src/smallengine/maths/*.c)
-file(GLOB SYS_SRCS src/smallengine/sys/*.c)
+file(GLOB GRAPHICS_SRCS src/graphics/*.c)
+file(GLOB MATHS_SRCS src/maths/*.c)
+file(GLOB SYS_SRCS src/sys/*.c)
 
 add_library(smallengine SHARED
+    ${HEADERS}
     ${GRAPHICS_SRC}
     ${MATHS_SRCS}
     ${SYS_SRCS}
@@ -21,9 +23,10 @@ set_target_properties(smallengine PROPERTIES
     VERSION ${PROJECT_VERSION}
     SOVERSION 0
 )
-set_target_properties(smallengine PROPERTIES PUBLIC_HEADER ${HEADERS})
+set_target_properties(smallengine PROPERTIES PUBLIC_HEADER "${HEADERS}")
 
-target_include_directories(smallengine PRIVATE "./inc/")
+target_include_directories(smallengine PUBLIC "./inc/")
+target_include_directories(smallengine PRIVATE "./src/")
 
 include(GNUInstallDirs)
 install(TARGETS smallengine

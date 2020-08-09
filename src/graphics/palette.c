@@ -1,10 +1,7 @@
 #include <stdio.h>
 
-#include <smallengine/graphics/palette.h>
-#include <smallengine/graphics/color.h>
-#include <smallengine/graphics/canvas.h>
-
-#include <smallengine/sys/mem.h>
+#include <smallengine/se_graphics.h>
+#include <smallengine/se_sys.h>
 
 /*
  * Palette Creation

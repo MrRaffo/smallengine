@@ -3,7 +3,7 @@
 
 #include <SDL2/SDL.h>
 
-#include <smallengine/sys/timer.h>
+#include <smallengine/se_sys.h>
 
 /*
  * Initialise the clock, returns 1 if successful

@@ -1,5 +1,5 @@
 #include <math.h>
-#include "smallengine/maths/maths.h"
+#include "smallengine/se_maths.h"
 
 /*
  * return 1 if the two values passed differ by less than EPSILON, otherwise

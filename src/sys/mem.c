@@ -4,8 +4,8 @@
 #include <string.h>     // strerror
 #include <errno.h>
 
-#include <smallengine/sys/mem.h>
-#include <smallengine/sys/log.h>
+#include <smallengine/se_log.h>
+#include <smallengine/se_sys.h>
 
 #define MEM_INTEGRITY_CHECK 0x0123dead
 

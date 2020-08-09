@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include <smallengine/se_sys.h>
+
 /*
  * arg
  * handles all command line argument checking code

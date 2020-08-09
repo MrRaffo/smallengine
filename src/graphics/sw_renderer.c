@@ -1,9 +1,8 @@
 #include <stdint.h>
 #include <SDL2/SDL.h>
 
-#include <smallengine/sys/mem.h>
-#include <smallengine/graphics/canvas.h>
-#include <smallengine/graphics/color.h>
+#include <smallengine/se_sys.h>
+#include <smallengine/se_graphics.h>
 
 static SDL_Window *screen_window = NULL;
 static SDL_Surface *window_surface = NULL;

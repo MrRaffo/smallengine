@@ -4,10 +4,8 @@
 #include <string.h>
 #include <errno.h>
 
-#include <smallengine/graphics/canvas.h>
-#include <smallengine/graphics/color.h>
-
-#include <smallengine/sys/mem.h>
+#include <smallengine/se_graphics.h>
+#include <smallengine/se_sys.h>
 
 /*
  * Creation and Initialization

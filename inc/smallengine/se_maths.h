@@ -1,10 +1,7 @@
-#ifndef __tuple_h__
-#define __tuple_h__
+#ifndef __SE_MATHS_H__
+#define __SE_MATHS_H__
 
-/*
- * contains all code related to the tuple data structure, used as vectors and
- * points in geometry.
- */
+#define EPSILON 0.00001     // threshold for comparing double values
 
 struct tuple {
         double x;
@@ -16,6 +13,26 @@ struct tuple {
 /* for convenience */
 typedef struct tuple point;
 typedef struct tuple vector;
+
+/*****************
+ * MISC MATHS
+ ****************/
+
+/*
+ * return 1 if the two values passed differ by less than EPSILON, otherwise
+ * return 0
+ */
+const int double_equal(const double val1, const double val2);
+
+/* 
+ * compare two doubles, return 0 if they are equal, -1 if the first value is
+ * less than the second and 1 if it is larger
+ */
+const int double_compare(const double val1, const double val2);
+
+/******************
+ * TUPLE
+ *****************/
 
 /* Creation and initialization */
 
@@ -92,4 +109,4 @@ const struct tuple vector_cross(const struct tuple v1, const struct tuple v2);
 /* return a vector that has struct against the given normal vector */
 const struct tuple vector_reflect(const struct tuple i, const struct tuple n);
 
-#endif // __tuple_h__
+#endif // header guard

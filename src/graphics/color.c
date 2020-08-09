@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdint.h>
 
-#include <smallengine/graphics/color.h>
-#include <smallengine/maths/maths.h>
-#include <smallengine/sys/mem.h>
+#include <smallengine/se_graphics.h>
+#include <smallengine/se_maths.h>
+#include <smallengine/se_sys.h>
 
 /*
  * Creation and Initialization
