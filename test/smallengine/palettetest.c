@@ -1,11 +1,8 @@
 #include <stdio.h>
 #include <assert.h>
 
-#include <smallengine/graphics/palette.h>
-#include <smallengine/graphics/canvas.h>
-#include <smallengine/graphics/color.h>
-
-#include <smallengine/sys/mem.h>
+#include <smallengine/se_sys.h>
+#include <smallengine/se_graphics.h>
 
 void TST_PaletteNew()
 {

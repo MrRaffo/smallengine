@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <smallengine/sys/arg.h>
+#include <smallengine/se_sys.h>
 
 int main(int argc, char **argv)
 {

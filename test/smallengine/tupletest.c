@@ -2,7 +2,7 @@
 #include <assert.h>
 #include <math.h>
 
-#include <smallengine/maths/maths.h>
+#include <smallengine/se_maths.h>
 #include <smallengine/maths/tuple.h>
 
 /* test the various creation functions for tuples, points and vectors */

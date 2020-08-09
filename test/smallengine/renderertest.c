@@ -3,10 +3,8 @@
 
 #include <SDL2/SDL.h>
 
-#include <smallengine/sys/mem.h>
-#include <smallengine/graphics/renderer.h>
-#include <smallengine/graphics/canvas.h>
-#include <smallengine/sys/timer.h>
+#include <smallengine/se_sys.h>
+#include <smallengine/se_graphics.h>
 
 void TST_RenderInit()
 {

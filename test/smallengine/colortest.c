@@ -2,9 +2,8 @@
 #include <assert.h>
 #include <stdint.h>
 
-#include <smallengine/maths/maths.h>
-
-#include <smallengine/graphics/color.h>
+#include <smallengine/se_maths.h>
+#include <smallengine/se_graphics.h>
 
 void TST_ColorNew()
 {

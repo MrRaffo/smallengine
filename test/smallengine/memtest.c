@@ -2,8 +2,8 @@
 #include <string.h>
 #include <assert.h>
 
-#include <smallengine/sys/mem.h>
-#include <smallengine/sys/log.h>
+#include <smallengine/se_sys.h>
+#include <smallengine/se_log.h>
 
 /*
  * Test memory system tracks all allocated blocks of memory

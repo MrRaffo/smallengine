@@ -4,8 +4,8 @@
 
 #include <SDL2/SDL.h>
 
-#include <smallengine/sys/timer.h>
-#include <smallengine/maths/maths.h>
+#include <smallengine/se_sys.h>
+#include <smallengine/se_maths.h>
 
 void TST_TimerInit()
 {

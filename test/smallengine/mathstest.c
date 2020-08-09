@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <assert.h>
 
-#include <smallengine/maths/maths.h>
+#include <smallengine/se_maths.h>
 
 void TST_DoubleEqual()
 {
