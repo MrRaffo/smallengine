@@ -14,7 +14,7 @@ static char **argv = NULL;
 /*
  * pass the programs argument count and pointer to the arg module
  */
-void arg_init(int arg_count, char **arg_ptr)
+void arg_init(int arg_count, const char **arg_ptr)
 {
         argc = arg_count;
         argv = arg_ptr;
@@ -32,7 +32,7 @@ int arg_number(void)
  * check if a parameter exists and give its index in the list
  * returns 0 if parameter not found
  */
-int arg_check(char *arg)
+int arg_check(const char *arg)
 {
         int i;
 
