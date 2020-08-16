@@ -1,6 +1,10 @@
 #ifndef __SE_MATHS_H__
 #define __SE_MATHS_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define EPSILON 0.00001     // threshold for comparing double values
 
 struct tuple {
@@ -108,5 +112,9 @@ const struct tuple vector_cross(const struct tuple v1, const struct tuple v2);
 
 /* return a vector that has struct against the given normal vector */
 const struct tuple vector_reflect(const struct tuple i, const struct tuple n);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // header guard

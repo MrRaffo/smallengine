@@ -1,30 +1,51 @@
-#include <stdio.h>
-#include <string.h>
-#include <assert.h>
+#include "gtest/gtest.h"
+#include "smallengine/se_sys.h"
+#include "smallengine/se_maths.h"
 
-#include <smallengine/se_sys.h>
-#include <smallengine/se_log.h>
+/*==================
+ * TIMER TESTS
+ *================*/
 
-/*
- * Test memory system tracks all allocated blocks of memory
- */
-void TST_MemTest()
-{
+TEST(TimerTest, TimerInitTest) {
+    
+    struct timer t = timer_init(60);
+    EXPECT_EQ(t.frame_rate, 60);
+    EXPECT_EQ(t.frame_ms, 16);
+
+    EXPECT_EQ(t.total_ms, 0);
+    EXPECT_EQ(t.delta_ms, 0);
+    EXPECT_EQ(t.cur_time, t.last_time);
+    EXPECT_EQ(double_equal(t.delta_s, 0.0), 1);
+}
+
+TEST(TimerTest, TimerTicTest) {
+    struct timer t = timer_init(60);
+    timer_tic(&t);
+
+    EXPECT_EQ(t.cur_time, (t.last_time + t.delta_ms));
+    EXPECT_EQ(double_equal(t.delta_s, (double)t.delta_ms/1000.0), 1);
+}
+
+/*==================
+ * MEMORY TESTS
+ *================*/
+
+TEST(MemoryTest, MemTest) {
         mem_init(1024);
         //mem_print_report();
 
-        assert(mem_total() == 1024);
-        assert(mem_used() == 32);
+        EXPECT_EQ(mem_total(), 1024);
+        EXPECT_EQ(mem_used(), 32);
 
         void *ptr1 = mem_alloc(256);
-        assert(mem_used() == 320);
+        EXPECT_EQ(mem_used(), 320);
 
         void *ptr2 = mem_alloc(128);
         void *ptr3 = mem_alloc(64);
         void *ptr4 = mem_alloc(200);
         //mem_print_report();
 
-        assert(mem_used() == 808);
+        EXPECT_EQ(mem_used(), 808);
         //mem_print_report();
 
         // test freeing memory
@@ -33,34 +54,33 @@ void TST_MemTest()
         mem_free(ptr3);
         //mem_print_report();
 
-        assert(mem_used() == 744);
+        EXPECT_EQ(mem_used(), 744);
 
         //printf("Freeing pointer 2:\n");
         mem_free(ptr2);
         //mem_print_report();
 
-        assert(mem_used() == 584);
+        EXPECT_EQ(mem_used(), 584);
         
         //printf("Freeing pointer 4:\n");
         mem_free(ptr4);
         //mem_print_report();
 
-        assert(mem_used() == 320);
+        EXPECT_EQ(mem_used(), 320);
         
         //printf("Freeing pointer 1:\n");
         mem_free(ptr1);
         //mem_print_report();
 
-        assert(mem_used() == 32);
-        assert(mem_available() == 992);
+        EXPECT_EQ(mem_used(), 32);
+        EXPECT_EQ(mem_available(), 992);
         //mem_dump();
 
-        log("[Memory Test] Complete, all tests pass!\n");
-
-        return;
+        mem_destroy();
 }
 
-void TST_MemoryIntegrity()
+/*
+TEST(MemoryTest, MemoryIntegrityTest)
 {
         mem_free_all();
         
@@ -93,13 +113,5 @@ void TST_MemoryIntegrity()
         mem_dump();
         mem_print_report();
 }
+*/
 
-int main()
-{
-        TST_MemTest();
-        //TST_MemoryIntegrity();
-       
-        mem_destroy();
-
-        return 0;
-}

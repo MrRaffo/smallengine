@@ -1,6 +1,10 @@
 #ifndef __SE_SYS_H__
 #define __SE_SYS_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stdint.h>
 
 struct timer {
@@ -25,7 +29,7 @@ struct timer {
 /*
  * pass the programs argument count and pointer to the arg module
  */
-void arg_init(int argc, char **argv);
+void arg_init(int argc, const char **argv);
 
 /*
  * get number of arguments
@@ -35,7 +39,7 @@ int arg_number(void);
 /*
  * check if a parameter exists and give its index in the list
  */
-int arg_check(char *arg);
+int arg_check(const char *arg);
 
 /*
  * return a pointer to the argument at the given index, NULL on fail
@@ -126,5 +130,9 @@ struct timer timer_init(uint32_t frame_rate);
  * update the timer and all values in the struct
  */
 void timer_tic(struct timer *t);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
