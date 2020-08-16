@@ -1,11 +1,11 @@
 #ifndef __SE_GRAPHICS_H__
 #define __SE_GRAPHICS_H__
 
+#include <SDL2/SDL.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-#include <SDL2/SDL.h>
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
         #define RMASK 0xff000000
@@ -374,6 +374,5 @@ void texture_blit_to_canvas(struct texture tex, int srx1, int sry1, int srx2,
 #ifdef __cpluplus
 }
 #endif
-
 
 #endif // header guard
