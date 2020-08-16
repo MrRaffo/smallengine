@@ -1,6 +1,10 @@
 #ifndef __SE_SYS_H__
 #define __SE_SYS_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <stdint.h>
 
 struct timer {
@@ -126,5 +130,9 @@ struct timer timer_init(uint32_t frame_rate);
  * update the timer and all values in the struct
  */
 void timer_tic(struct timer *t);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

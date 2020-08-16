@@ -33,3 +33,5 @@ install(TARGETS smallengine
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/smallengine")
 
+add_subdirectory(test)
+add_subdirectory(lib/googletest)

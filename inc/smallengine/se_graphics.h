@@ -1,6 +1,10 @@
 #ifndef __SE_GRAPHICS_H__
 #define __SE_GRAPHICS_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <SDL2/SDL.h>
 
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
@@ -367,6 +371,9 @@ void texture_blit_to_canvas(struct texture tex, int srx1, int sry1, int srx2,
                             int sry2, struct canvas dst, int dsx, int dsy, 
                             enum blit_mode mode);
 
+#ifdef __cpluplus
+}
+#endif
 
 
 #endif // header guard
