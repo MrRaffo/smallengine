@@ -2,7 +2,7 @@
 #include "smallengine/se_sys.h"
 
 TEST(ArgTest, ArgCheckTest) {
-    const char *arglist[] = {"progname", "-test", "-another"};
+    char *arglist[] = {"progname", "-test", "-another"};
     int argcnt = 3;
 
     arg_init(argcnt, arglist);

@@ -14,9 +14,9 @@ file(GLOB SYS_SRCS src/sys/*.c)
 
 add_library(smallengine SHARED
     ${HEADERS}
-    ${GRAPHICS_SRC}
     ${MATHS_SRCS}
     ${SYS_SRCS}
+    ${GRAPHICS_SRCS}
 )
 
 set_target_properties(smallengine PROPERTIES 

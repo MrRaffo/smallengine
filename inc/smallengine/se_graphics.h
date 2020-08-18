@@ -29,11 +29,12 @@ extern "C" {
         #define ASHIFT 24
 #endif      // SDL_BYTEORDER
 
+
 struct color {
-        double r;
-        double g;
-        double b;
-        double a;
+    double r;
+    double g;
+    double b;
+    double a;
 };
 
 struct palette {
@@ -93,6 +94,7 @@ struct color color_rgba_int(const int r, const int g, const int b,
 
 /* returns 1 if the two colours given are the same, 0 otherwise */
 int color_equal(const struct color c1, const struct color c2);
+
 
 /*
  * Return Values
@@ -194,8 +196,6 @@ int palette_replace_color(struct palette p, const struct color oldc,
  * success, 0 on failure
  */
 int palette_replace_index(struct palette p, int index, const struct color c);
-
-
 
 /*********************
  * CANVAS
@@ -371,8 +371,10 @@ void texture_blit_to_canvas(struct texture tex, int srx1, int sry1, int srx2,
                             int sry2, struct canvas dst, int dsx, int dsy, 
                             enum blit_mode mode);
 
-#ifdef __cpluplus
+
+
+#ifdef __cplusplus
 }
 #endif
 
-#endif // header guard
+#endif

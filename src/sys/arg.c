@@ -14,7 +14,7 @@ static char **argv = NULL;
 /*
  * pass the programs argument count and pointer to the arg module
  */
-void arg_init(int arg_count, const char **arg_ptr)
+void arg_init(int arg_count, char **arg_ptr)
 {
         argc = arg_count;
         argv = arg_ptr;

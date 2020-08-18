@@ -1,11 +1,12 @@
 #ifndef __SE_SYS_H__
 #define __SE_SYS_H__
 
+#include <stdlib.h>
+#include <stdint.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-#include <stdint.h>
 
 struct timer {
         uint32_t frame_rate;    // desired frame rate
@@ -29,7 +30,7 @@ struct timer {
 /*
  * pass the programs argument count and pointer to the arg module
  */
-void arg_init(int argc, const char **argv);
+void arg_init(int argc, char **argv);
 
 /*
  * get number of arguments
