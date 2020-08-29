@@ -22,15 +22,25 @@ typedef struct tuple vector;
  * MISC MATHS
  ****************/
 
-/*
- * return 1 if the two values passed differ by less than EPSILON, otherwise
- * return 0
+/**
+ * @brief Check two numbers are close enough to be considered equal
+ * 
+ * This function checks if the values are within EPSILON of eachother
+ * and returns true if the difference between them is less than
+ * EPSILON
+ *
+ * @param val1 first number to compare
+ * @param val2 second number to compare
+ * @return 1 if 'equal', 0 otherwise
  */
 const int double_equal(const double val1, const double val2);
 
-/* 
- * compare two doubles, return 0 if they are equal, -1 if the first value is
- * less than the second and 1 if it is larger
+/**
+ * @brief Compare if first value is smaller, equal to or larger than the second
+ *
+ * @param val1 first number to compare
+ * @param val2 number to compare the first to
+ * @return an @c int -1 if val1 < val2, 0 if equal, 1 if val1 > val2
  */
 const int double_compare(const double val1, const double val2);
 
