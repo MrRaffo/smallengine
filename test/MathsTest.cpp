@@ -3,6 +3,10 @@
 #include "gtest/gtest.h"
 #include "smallengine/se_maths.h"
 
+/**
+ * MATHS TESTS
+ */
+
 TEST(MathsTest, DoubleEqualTest) {
     EXPECT_EQ(double_equal(0.0001, 0.0001), 1);
     EXPECT_EQ(double_equal(0.0001, 0.0002), 0);
@@ -16,6 +20,10 @@ TEST(MathsTest, DoubleCompareTest) {
     EXPECT_EQ(double_compare(1.0, 0.5), 1);
     EXPECT_EQ(double_compare(0.5, 0.99999), -1);
 }
+
+/**
+ * TUPLE TESTS
+ */
 
 TEST(TupleTest, TupleInitTest) {
     
@@ -198,3 +206,129 @@ TEST(TupleTest, VectorReflectTest) {
         EXPECT_EQ(tuple_equal(ref, vector_3d(1.0, 0.0, 0.0)), 1);
 }
 
+/**
+ * MATRIX TESTS
+ */
+
+// matrix initialisation
+TEST(MatrixTest, MatrixInitTest) {
+
+    struct matrix mat = matrix(5, 4);
+
+    EXPECT_EQ(mat.row, 5);
+    EXPECT_EQ(mat.col, 4);
+}
+
+TEST(MatrixTest, MatrixEqualTest) {
+
+    struct matrix m = matrix(4, 3);
+    struct matrix n = matrix(4, 3);
+    struct matrix p = matrix(3, 4);
+
+    EXPECT_EQ(matrix_equal(m, n), 1);
+    EXPECT_EQ(matrix_equal(n, m), 1);
+    EXPECT_EQ(matrix_equal(m, p), 0);
+
+    // checking this is 1 just confirms it was successful before next test
+    EXPECT_EQ(matrix_set(m, 1, 1, 3.5), 1);
+    EXPECT_EQ(matrix_equal(m, n), 0);
+
+    EXPECT_EQ(matrix_set(n, 1, 1, 3.4999999999), 1);
+    EXPECT_EQ(matrix_equal(m, n), 1);
+}
+
+// test get and set together
+TEST(MatrixTest, MatrixSetGetTest) {
+
+    struct matrix m = matrix(2, 2);
+    EXPECT_EQ(matrix_set(m, 1, 1, 1000.500011), 1);
+
+    EXPECT_EQ(matrix_get(m, 3, 5), 0.0);
+    EXPECT_EQ(matrix_get(m, 0, 0), 0.0);
+    EXPECT_EQ(double_equal(matrix_get(m, 1, 1), 1000.500011), 1);
+
+    EXPECT_EQ(matrix_set(m, 5, 5, 0.5), 0);
+} 
+
+// matrix copy
+TEST(MatrixTest, MatrixCopyTest) {
+    
+    struct matrix m = matrix(3, 3);
+    double data[] = {3.0, 30.0, 1.0,
+                     1.0, 6.0, 10.0,
+                     0.0, 0.5, 4.0};
+    m.matrix = data;
+
+    struct matrix copy = matrix_copy(m);
+
+    EXPECT_EQ(matrix_equal(m, copy), 1);
+}
+
+TEST(MatrixTest, MatrixMultiplyTest) {
+    
+    struct matrix m = matrix(2, 3);
+    struct matrix n = matrix(3, 2);
+
+    double val = 1.0;
+
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 3; j++) {
+            matrix_set(m, i, j, val);
+            val += 1.0;
+        }
+    }
+
+    val = 1.0;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 2; j++) {
+            matrix_set(n, i, j, val);
+            val += 1.0;
+        }
+    }
+
+    struct matrix c = matrix(2, 2);
+    matrix_set(c, 0, 0, 22.0);
+    matrix_set(c, 0, 1, 28.0);
+    matrix_set(c, 1, 0, 49.0);
+    matrix_set(c, 1, 1, 64.0);
+
+    EXPECT_EQ(matrix_equal(matrix_multiply(m, n), c), 1);
+    EXPECT_EQ(matrix_equal(matrix_multiply(m, c), n), 0);
+}
+
+TEST(MatrixTest, MatrixTupleMultiplyTest) {
+    
+    struct matrix m = matrix(4, 4);
+
+    double data[] = {1.0f, 2.0f, 3.0f, 4.0f, 2.0f, 4.0f, 4.0f, 2.0f,
+                     8.0f, 6.0f, 4.0f, 1.0f, 0.0f, 0.0f, 0.0f, 1.0f};
+
+    m.matrix = data;
+
+    struct tuple t = tuple(1.0, 2.0, 3.0, 1.0);
+
+    struct tuple expect = tuple(18.0, 24.0, 33.0, 1.0);
+    struct tuple result = matrix_transform(m, t);
+
+    EXPECT_EQ(tuple_equal(result, expect), 1);
+}
+
+TEST(MatrixTest, MatrixIdentityTest) {
+    
+    struct matrix m = matrix_identity(4);
+    struct matrix i = matrix(4, 4);
+
+    double id[] = {1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f,
+                   0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f};
+
+    i.matrix = id;
+
+    struct matrix a = matrix(4, 4);
+
+    double data[] = {0.0f, 1.0f, 2.0f, 4.0f, 1.0f, 2.0f, 4.0f, 8.0f,
+                     2.0f, 4.0f, 8.0f, 16.0f, 4.0f, 8.0f, 16.0f, 32.0f};
+    a.matrix = data;
+
+    EXPECT_EQ(matrix_equal(m, i), 1);
+    EXPECT_EQ(matrix_equal(a, matrix_multiply(a, m)), 1);
+}
