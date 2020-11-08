@@ -42,7 +42,24 @@ int arg_check(const char *arg)
                 }
         }
 
-        return 0;
+        return -1;
+}
+
+/* @brief Get the value associated with a command line parameter
+ *
+ * Checks for a matching command line argument and returns a pointer to the next
+ * argument in the list, if it exists, NULL otherwise
+ *
+ * @param arg the value to check for
+ */
+char *arg_get_value(const char *arg)
+{
+        int i = arg_check(arg) + 1;
+        if (i > 0 && i < argc) {
+                return argv[i];
+        }
+
+        return NULL;
 }
 
 /*

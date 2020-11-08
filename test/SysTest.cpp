@@ -22,7 +22,27 @@ TEST(ArgTest, ArgCheckTest) {
 
     EXPECT_EQ(arg_check(arg1), 1);
     EXPECT_EQ(arg_check(arg2), 2);
-    EXPECT_EQ(arg_check(arg3), 0);
+    EXPECT_EQ(arg_check(arg3), -1);
+}
+
+TEST(ArgTest, ArgGetValueTest) {
+    char *arglist[] = {"progname", "--value", "100", "--another", "200", "--noval"};
+    int argcnt = 6;
+
+    arg_init(argcnt, arglist);
+
+    std::string str1 = "--value";
+    std::string str2 = "--another";
+    std::string str3 = "--noval";
+
+    const char *arg1 = str1.c_str();
+    const char *arg2 = str2.c_str();
+    const char *arg3 = str3.c_str();
+
+    EXPECT_EQ(strncmp(arg_get_value("--value"), "100", 10), 0);
+    EXPECT_EQ(strncmp(arg_get_value("--another"), "200", 10), 0);
+    EXPECT_TRUE(arg_get_value("--noval") == nullptr);
+    EXPECT_TRUE(arg_get_value("--noarg") == NULL);
 }
 
 /*==================

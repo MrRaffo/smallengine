@@ -39,8 +39,18 @@ int arg_number(void);
 
 /*
  * check if a parameter exists and give its index in the list
+ * returns -1 on fail, index of the parameter otherwise
  */
 int arg_check(const char *arg);
+
+/* @brief Get the value associated with a command line parameter
+ *
+ * Checks for a matching command line argument and returns a pointer to the next
+ * argument in the list, if it exists, NULL otherwise
+ *
+ * @param arg the value to check for
+ */
+char *arg_get_value(const char *arg);
 
 /*
  * return a pointer to the argument at the given index, NULL on fail
