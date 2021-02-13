@@ -30,7 +30,7 @@ int arg_number(void)
 
 /*
  * check if a parameter exists and give its index in the list
- * returns 0 if parameter not found
+ * returns -1 if parameter not found
  */
 int arg_check(const char *arg)
 {
